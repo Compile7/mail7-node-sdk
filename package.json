@@ -1,0 +1,24 @@
+{
+  "name": "mail7",
+  "version": "1.0.0",
+  "description": "Mail7 Disposable Email NodeJs SDK contains email and routing rules APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Compile7/mail7-node-sdk.git"
+  },
+  "author": "Mail7 Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Compile7/mail7-bug-tracker/issues"
+  },
+  "homepage": "https://www.mail7.io",
+  "dependencies": {
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2"
+  }
+}
