@@ -36,11 +36,14 @@ module.exports = function (config = {}) {
         if (error) {
           helper.responseHandler('serverError', error, resolve, reject);
         } else {
-          try {
-            response = JSON.parse(body);
-            helper.responseHandler('', response, resolve, reject);
-          } catch (err) {
-            helper.responseHandler('serverError', '', resolve, reject);
+          if (queryParameters.callback) helper.responseHandler('', body, resolve, reject);
+          else {
+            try {
+              formattedBody = typeof body == 'object' ? body : JSON.parse(body);
+              helper.responseHandler('', formattedBody, resolve, reject);
+            } catch (err) {
+              helper.responseHandler('serverError', '', resolve, reject);
+            }
           }
         }
       });

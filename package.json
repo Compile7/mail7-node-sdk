@@ -1,6 +1,6 @@
 {
   "name": "mail7",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mail7 Disposable Email NodeJs SDK contains email and routing rules APIs",
   "main": "index.js",
   "scripts": {
