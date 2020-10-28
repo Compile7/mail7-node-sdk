@@ -33,7 +33,7 @@ mail7.getInboxByEmail("<example-email@mail7.io>").then((response) => {
 
 ### Inbox APIs:
 
- - **[getInboxByEmail(to)](https://docs.mail7.io/mail-apis/get-email)**
+ - **[getInboxByEmail(to,](https://docs.mail7.io/mail-apis/get-email)**
  - **[getEmailById(to, mesid)](https://docs.mail7.io/mail-apis/get-single-email)**
  - **[deleteEmailById(mesid, domain)](https://docs.mail7.io/mail-apis/delete-email)**
 
@@ -51,9 +51,39 @@ mail7.getInboxByEmail("<example-email@mail7.io>").then((response) => {
 - **[deleteRoutingRules(ruleName)](https://docs.mail7.io/routing-rules/delete-rule)**
 
 #### Params
-- *@param {object} data - json object for roles need to be create*
+- *@param {object} data - json object for rules need to be create*
 - *@param {string} ruleName - rule to be delete*
 
 > *If only username `testme` is passed then it will be treated as default `mail7.io` domain email like `testme@mail7.io`*
 
 It is suggested that pass full email address for any other domain like `testme@domain1.com`
+
+### JSONP Requests ('callback'):
+If you need to receive your API response wrapped inside a JSONP callback function, you can use the  `callback`  query parameter with any valid API route. The data will be returned wrapped in the callback function you specify.
+
+The  `callback`  value can be any valid JavaScript method name.
+
+The entire JSON API response will be delivered wrapped in the requested callback function.
+
+##### Example JSONP Query
+
+````
+mail7.getInboxByEmail("<example-email@mail7.io>", "myCallbackFunction" ).then((response) => {
+   console.log(response);
+}).catch((error) => {
+   console.log(error);
+});
+````
+##### **JSONP Response**
+````
+myCallbackFunction({ status: 'success',
+  data:
+   [{ _id: '5f8ffebc0552080017029286',
+       to_username: 'testmail7',
+       to_domain: 'mail7.io',
+       mail_source: [Object],
+       is_deleted: false,
+       is_read: false,
+       sender_time: '2020-10-21T09:26:20.533Z' }] 
+   })
+````
